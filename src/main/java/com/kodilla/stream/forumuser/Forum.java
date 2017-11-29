@@ -16,7 +16,6 @@ public class Forum {
         forumUsers.add(new ForumUser(7, "Aimee Murphy", 'F', 1980, 6, 15, 7));
         forumUsers.add(new ForumUser(8, "Monica GreenWood", 'F', 2000, 4, 3, 2));
         forumUsers.add(new ForumUser(9, "Paul Newman", 'M', 1997, 12, 26, 4));
-
     }
 
     public ArrayList<ForumUser> getUserList() {

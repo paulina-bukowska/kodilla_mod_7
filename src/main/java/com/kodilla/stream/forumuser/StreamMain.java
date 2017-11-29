@@ -1,5 +1,6 @@
 package com.kodilla.stream.forumuser;
 
+import java.time.LocalDate;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -13,14 +14,14 @@ public class StreamMain {
         - wyświetl otrzymaną mapę wynikową
 */
         Forum forum = new Forum();
-        Map<Integer, ForumUser> theResultMapOfBooks = forum.getUserList().stream()
+        Map<Integer, ForumUser> theResultMapOfUsers = forum.getUserList().stream()
                 .filter(user -> user.getSex() == 'M')
-                .filter(user -> user.getBirthDate().getYear() <= 1997)
+                .filter(user -> user.getBirthDate().isBefore(LocalDate.of(1997, 11, 30)))
                 .filter(user -> user.getPostsNum() >= 1)
                 .collect(Collectors.toMap(ForumUser::getId, forumUser -> forumUser));
 
-        System.out.println("# elements: " + theResultMapOfBooks.size());
-        theResultMapOfBooks.entrySet().stream()
+        System.out.println("# elements: " + theResultMapOfUsers.size());
+        theResultMapOfUsers.entrySet().stream()
                 .map(entry -> entry.getKey() + ": " + entry.getValue())
                 .forEach(System.out::println);
     }
