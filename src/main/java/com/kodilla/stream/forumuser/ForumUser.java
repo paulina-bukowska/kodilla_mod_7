@@ -46,4 +46,28 @@ public final class ForumUser {
                 ", postsNum=" + postsNum +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ForumUser)) return false;
+
+        ForumUser forumUser = (ForumUser) o;
+
+        if (id != null ? !id.equals(forumUser.id) : forumUser.id != null) return false;
+        if (name != null ? !name.equals(forumUser.name) : forumUser.name != null) return false;
+        if (sex != null ? !sex.equals(forumUser.sex) : forumUser.sex != null) return false;
+        if (birthDate != null ? !birthDate.equals(forumUser.birthDate) : forumUser.birthDate != null) return false;
+        return postsNum != null ? postsNum.equals(forumUser.postsNum) : forumUser.postsNum == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (sex != null ? sex.hashCode() : 0);
+        result = 31 * result + (birthDate != null ? birthDate.hashCode() : 0);
+        result = 31 * result + (postsNum != null ? postsNum.hashCode() : 0);
+        return result;
+    }
 }
