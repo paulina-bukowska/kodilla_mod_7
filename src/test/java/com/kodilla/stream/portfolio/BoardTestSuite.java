@@ -162,20 +162,21 @@ public class BoardTestSuite {
         Assert.assertEquals(10, average, 0);
     }
 
-    /*@Test
+    @Test
     public void testAddTaskListAverageWorkingOnTaskUsingAverageMethod() {
         //Given
         Board project = prepareTestData();
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        double averageDays = IntStream.range(0, project.getTaskLists().size())
-                .map(num -> project.getTaskLists().getTasks().get(num))
+        double averageDays = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(taskList -> taskList.getTasks().stream())
                 .map(task -> task.getCreated())
                 .map(time -> time.until(LocalDate.now()))
-                .map(period -> period.getDays())
+                .mapToInt(period -> period.getDays())
                 .average().getAsDouble();
-    }*/
+        //Then
+        Assert.assertEquals(10, averageDays, 0);
+    }
 }
